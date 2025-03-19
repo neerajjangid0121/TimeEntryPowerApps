@@ -1,0 +1,104 @@
+function setTaskStatus(selectedControl) {
+    console.log("JS called-------------------------");
+    if (!selectedControl || selectedControl.length === 0) {
+        Xrm.Navigation.openAlertDialog({ text: "No records selected!" });
+        return;
+    }
+
+    var entityName = "nj_projecttask"; // Use correct Dataverse schema name
+    var fieldName = "nj_taskstage"; // Field to update
+    //var updatedValue = "Invoice"; // New value to set
+    var clientUrl = Xrm.Page.context.getClientUrl();
+    var requestsCompleted = 0; // Track completed requests
+
+    // Create a simple popup for user selection
+    var htmlContent = `
+    <div style="font-family: Arial; padding: 10px;">
+        <h2>Select Task Status</h2>
+        <label for="taskStatus">Choose a Status:</label>
+        <select id="taskStatus">
+            <option value="0">In Progress</option>
+            <option value="1">Completed</option>
+            <option value="2">Rejected</option>
+        </select>
+        <br><br>
+        <button id="submitTaskStatus">Submit</button>
+        <button onclick="closePopup()">Cancel</button>
+    </div>
+`;
+console.log("1");
+
+
+    // Create a modal popup
+    var popup = document.createElement("div");
+    popup.id = "customPopup";
+    popup.style.position = "fixed";
+    popup.style.top = "30%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = "white";
+    popup.style.padding = "20px";
+    popup.style.boxShadow = "0px 0px 10px gray";
+    popup.style.zIndex = "1000";
+    popup.innerHTML = htmlContent;
+    document.body.appendChild(popup);
+
+    // Function to close the popup
+    window.closePopup = function () {
+        document.body.removeChild(popup);
+    };
+
+    console.log("2");
+    
+
+    document.getElementById("submitTaskStatus").addEventListener("click", function () {
+        var selectedValue = document.getElementById("taskStatus").value;
+
+        if (!selectedValue) {
+            Xrm.Navigation.openAlertDialog({ text: "Please select a status!" });
+            return;
+        }
+
+        console.log("🔹 Selected Task Status:", selectedValue);
+
+        // Loop through all selected records and update them
+        selectedControl.forEach(function (recordId) {
+            console.log("🔄 Updating Record ID:", recordId);
+
+            var data = {};
+            data[fieldName] = parseInt(selectedValue);
+
+            recordId = recordId.replace("{", "").replace("}", ""); // Clean GUID format
+
+            var req = new XMLHttpRequest();
+            req.open("PATCH", `${clientUrl}/api/data/v9.0/${entityName}(${recordId})`, true);
+            req.setRequestHeader("OData-Version", "4.0");
+            req.setRequestHeader("Content-Type", "application/json");
+            req.setRequestHeader("Accept", "application/json");
+
+            req.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    requestsCompleted++;
+
+                    if (this.status === 204) {
+                        console.log("✅ Record " + recordId + " updated successfully!");
+                    } else {
+                        console.error("❌ Error updating record " + recordId + ": " + this.responseText);
+                    }
+                    console.log("3");
+                    
+                    // Show confirmation only after all requests complete
+                    if (requestsCompleted === selectedControl.length) {
+                        Xrm.Navigation.openAlertDialog({ text: "Task Status updated successfully for all selected records!" });
+                        Xrm.Utility.refreshParentGrid(); // Refresh the grid after updates
+                        closePopup();
+                    }
+                }
+            };
+            console.log("4");
+            
+            req.send(JSON.stringify(data));
+        });
+    });
+}
+

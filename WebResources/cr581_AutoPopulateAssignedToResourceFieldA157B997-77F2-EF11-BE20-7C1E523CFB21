@@ -1,0 +1,40 @@
+function setAssignedToResource(executionContext) {
+    var formContext = executionContext.getFormContext();
+    var assignedToResource = formContext.getAttribute("nj_assignedtoresource").getValue();
+
+    // ✅ Exit the function if the field is already populated
+    if (assignedToResource) {
+        console.log("✅ Assigned to Resource is already set. Skipping auto-population.");
+        return;
+    }
+
+    var userName = Xrm.Utility.getGlobalContext().userSettings.userName; // Get logged-in user's name
+
+    console.log("🔹 Assigned to Resource is empty. Searching for contact:", userName);
+
+    // Look up the contact based on the user name
+    Xrm.WebApi.retrieveMultipleRecords("contact", "?$select=contactid,fullname&$filter=fullname eq '" + userName + "'")
+        .then(function (result) {
+            if (result.entities.length > 0) {
+                var contact = result.entities[0]; // Get first matching contact
+                var contactId = contact.contactid;
+                var contactName = contact.fullname;
+
+                console.log("✅ Contact found:", contactName);
+
+                // ✅ Set the field only if it's still empty
+                if (!formContext.getAttribute("nj_assignedtoresource").getValue()) {
+                    formContext.getAttribute("nj_assignedtoresource").setValue([{
+                        id: contactId,
+                        entityType: "contact",
+                        name: contactName
+                    }]);
+                    console.log("✅ Assigned to Resource field updated with:", contactName);
+                }
+            } else {
+                console.warn("⚠️ No matching contact found for:", userName);
+            }
+        }, function (error) {
+            console.error("❌ Error retrieving contact:", error.message);
+        });
+}

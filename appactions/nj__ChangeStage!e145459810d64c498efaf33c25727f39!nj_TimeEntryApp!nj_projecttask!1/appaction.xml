@@ -1,0 +1,36 @@
+<appaction uniquename="nj__ChangeStage!e145459810d64c498efaf33c25727f39!nj_TimeEntryApp!nj_projecttask!1">
+  <appmoduleid>
+    <uniquename>nj_TimeEntryApp</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Change Stage">
+    <label description="Change Stage" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>nj_projecttask</logicalname>
+  </contextentity>
+  <contextvalue>nj_projecttask</contextvalue>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>1</location>
+  <name>ChangeStage!e145459810d64c498efaf33c25727f39</name>
+  <onclickeventjavascriptfunctionname>setTaskStatus</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":23}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>bb964a80-1fff-ef11-bae3-7c1e523dbfae</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>1000100010.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilityformulacomponentlibraryid>
+    <name>nj_timeentryappdefaultcommandlibrary_51108</name>
+  </visibilityformulacomponentlibraryid>
+  <visibilityformulacomponentname>2ee5b4bc49014ecb98a84fba68307774</visibilityformulacomponentname>
+  <visibilityformulafunctionname>Visible</visibilityformulafunctionname>
+  <visibilitytype>1</visibilitytype>
+</appaction>

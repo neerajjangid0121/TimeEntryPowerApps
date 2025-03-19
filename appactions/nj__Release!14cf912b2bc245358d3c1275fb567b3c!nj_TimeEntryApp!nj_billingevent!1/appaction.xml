@@ -1,0 +1,39 @@
+<appaction uniquename="nj__Release!14cf912b2bc245358d3c1275fb567b3c!nj_TimeEntryApp!nj_billingevent!1">
+  <appmoduleid>
+    <uniquename>nj_TimeEntryApp</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Release">
+    <label description="Release" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>nj_billingevent</logicalname>
+  </contextentity>
+  <contextvalue>nj_billingevent</contextvalue>
+  <hidden>0</hidden>
+  <iconwebresourceid>
+    <webresourceid>06003fc7-4501-4baa-964a-7395996a7e4f</webresourceid>
+  </iconwebresourceid>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>1</location>
+  <name>Release!14cf912b2bc245358d3c1275fb567b3c</name>
+  <onclickeventjavascriptfunctionname>updateDataverseField</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":23}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>e55ca53d-4bef-ef11-be20-6045bdc5e2d2</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>1000500025.5000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilityformulacomponentlibraryid>
+    <name>nj_timeentryappdefaultcommandlibrary_51108</name>
+  </visibilityformulacomponentlibraryid>
+  <visibilityformulacomponentname>4b9a5c870ebd425d8659ad0f37cdb21b</visibilityformulacomponentname>
+  <visibilityformulafunctionname>Visible</visibilityformulafunctionname>
+  <visibilitytype>1</visibilitytype>
+</appaction>

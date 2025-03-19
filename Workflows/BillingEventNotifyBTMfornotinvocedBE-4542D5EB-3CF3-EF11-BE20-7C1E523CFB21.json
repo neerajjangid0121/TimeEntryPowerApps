@@ -1,0 +1,140 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "cr5aa_sharedcommondataserviceforapps_7ea98"
+        },
+        "runtimeSource": "embedded"
+      },
+      "shared_excelonline": {
+        "api": {
+          "name": "shared_excelonline"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedexcelonline_ac0cd"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "undefined",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "type": "Recurrence",
+          "recurrence": {
+            "frequency": "Month",
+            "interval": 1,
+            "startTime": "2025-02-20T21:30:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "5ab259c0-f991-4228-843e-e5b1abe45e9f"
+          }
+        }
+      },
+      "actions": {
+        "List_rows_-_Getting_All_Billing_Events": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "nj_billingevents"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "start_of_month": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "78d3d7ea-1408-4b2c-89fb-55c59a00960a"
+          }
+        },
+        "start_of_month": {
+          "type": "Compose",
+          "inputs": "@formatDateTime(startOfMonth(utcNow()), 'yyyy-MM-ddTHH:mm:ssZ')",
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "e8a5b35b-cce8-482c-858f-8f6724bae3ec"
+          }
+        },
+        "Filter_array": {
+          "type": "Query",
+          "inputs": {
+            "from": "@outputs('List_rows_-_Getting_All_Billing_Events')?['body/value']",
+            "where": "@and(\r\n   greaterOrEquals(formatDateTime(item()?['createdon'], 'yyyy-MM-dd'), outputs('start_of_month')),\r\n   lessOrEquals(formatDateTime(item()?['createdon'], 'yyyy-MM-dd'), formatDateTime(utcNow(), 'yyyy-MM-dd')),\r\n   equals(item()?['nj_invoiced'],false)\r\n)"
+          },
+          "runAfter": {
+            "List_rows_-_Getting_All_Billing_Events": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f34e4e51-e951-4133-8398-81228e05d772"
+          }
+        },
+        "Apply_to_each": {
+          "type": "Foreach",
+          "foreach": "@body('Filter_array')",
+          "actions": {
+            "Compose": {
+              "type": "Compose",
+              "inputs": "@items('Apply_to_Each')?['_nj_resource_value@OData.Community.Display.V1.FormattedValue']"
+            },
+            "Add_a_row_into_a_table": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "file": "69DF1C8FB465BE6D!129",
+                  "table": "{D193DC26-0860-4854-9FEA-A7757806648A}",
+                  "item/Billing Event Number": "@items('Apply_to_each')?['nj_newcolumn']",
+                  "item/Total Amount": "@items('Apply_to_each')?['nj_totalamount']",
+                  "item/Created date": "@formatDateTime(items('Apply_to_Each')?['createdon'], 'yyyy-MM-dd')",
+                  "item/Resource": "@outputs('Compose')"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonline",
+                  "operationId": "AddRowV2",
+                  "connectionName": "shared_excelonline"
+                }
+              },
+              "runAfter": {
+                "Compose": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "69DF1C8FB465BE6D!129": "/Timecard%20App%20power%20apps/BillingEventsNotInvoiced.xlsx"
+              }
+            }
+          },
+          "runAfter": {
+            "Filter_array": [
+              "Succeeded"
+            ]
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

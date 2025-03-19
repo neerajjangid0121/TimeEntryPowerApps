@@ -1,0 +1,10 @@
+function preventDelete(executionContext) {
+    var formContext = executionContext.getFormContext();
+    var isInvoiced = formContext.getAttribute("nj_invoiced").getValue();
+    console.log('Called ---'+isInvocied);
+    if (isInvoiced) {
+        return true;
+    }else{
+        return false;        
+  }
+}

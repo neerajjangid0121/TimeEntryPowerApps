@@ -1,0 +1,210 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cr5aa_sharedcommondataserviceforapps_7ea98"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cr5aa_sharedapprovals_2dca6"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      },
+      "shared_gmail": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "nj_sharedgmail_e0184"
+        },
+        "api": {
+          "name": "shared_gmail"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "2284e8c8-9317-4b69-9e13-79962cc2f6e4"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "nj_timecard",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Update_Timecard_Approval_Status": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "b2f7f0f3-9aca-426b-a7dc-29e4c28680cb"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateOnlyRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "nj_timecards",
+                  "recordId": "@triggerOutputs()?['body/nj_timecardid']",
+                  "item/nj_approvalstatus": 124920001
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Start_and_wait_for_an_approval": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Creation_of_task": {
+                "runAfter": {
+                  "Update_Timecard_Approval_Status_to_Rejected": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "521f5068-f464-4111-8072-5d63667c0c77"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "CreateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "tasks",
+                    "item/subject": "Timecard is rejected please review once",
+                    "item/prioritycode": 2,
+                    "item/regardingobjectid_nj_timecard_task@odata.bind": "nj_timecards(@{triggerOutputs()?['body/nj_timecardid']})"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Update_Timecard_Approval_Status_to_Rejected": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "29381f60-94c3-4556-b5ca-f6cd239e669b"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateOnlyRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "nj_timecards",
+                    "recordId": "@triggerOutputs()?['body/nj_timecardid']",
+                    "item/nj_approvalstatus": 124920002
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Send_email_(V2)": {
+                "runAfter": {
+                  "Creation_of_task": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "89d5aabd-4fdf-4769-8796-b2e0d7cd3863"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_gmail",
+                    "operationId": "SendEmailV2",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_gmail"
+                  },
+                  "parameters": {
+                    "emailMessage/To": "jsohan678@gmail.com",
+                    "emailMessage/Subject": "Your Timecard is @{outputs('Start_and_wait_for_an_approval')?['body/outcome']}",
+                    "emailMessage/Body": "<p>Please contact your organization for further assistance</p>"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@outputs('Start_and_wait_for_an_approval')?['body/outcome']",
+                  "Approve"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ddcc90bf-7e5d-4dab-93eb-caa18e7fca59"
+          },
+          "type": "If"
+        },
+        "Start_and_wait_for_an_approval": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0673b790-ef71-4a21-a3b8-a2adedc4173d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_approvals",
+              "operationId": "StartAndWaitForAnApproval",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+            },
+            "parameters": {
+              "approvalType": "Basic",
+              "WebhookApprovalCreationInput/title": "BTM Approval",
+              "WebhookApprovalCreationInput/assignedTo": "Test.btm@purvi2424.onmicrosoft.com",
+              "WebhookApprovalCreationInput/enableNotifications": true,
+              "WebhookApprovalCreationInput/enableReassignment": true
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

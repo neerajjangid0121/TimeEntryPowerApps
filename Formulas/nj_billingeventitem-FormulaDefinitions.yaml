@@ -1,0 +1,1 @@
+nj_amount: =nj_Timecard.nj_hoursworked * nj_BillingEvent.nj_Resource.nj_resourceamountperhour

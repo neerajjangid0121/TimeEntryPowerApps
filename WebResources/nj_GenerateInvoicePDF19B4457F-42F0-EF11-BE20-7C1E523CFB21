@@ -1,0 +1,47 @@
+function loadJsPDF(callback) {
+    if (typeof window.jsPDF !== "undefined") {
+        callback();
+        return;
+    }
+
+    var script = document.createElement("script");
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+    script.onload = callback;
+    document.head.appendChild(script);
+}
+
+function generateAndStorePDF(recordId, invoiceNumber, customerName, totalAmount) {
+    console.log("🔹 Loading jsPDF...");
+    
+    loadJsPDF(function () {
+        console.log("✅ jsPDF Loaded Successfully");
+
+        var { jsPDF } = window.jspdf;
+        var doc = new jsPDF();
+
+        doc.text(`Invoice Number: ${invoiceNumber}`, 10, 10);
+        doc.text(`Customer: ${customerName}`, 10, 20);
+        doc.text(`Total Amount: $${totalAmount}`, 10, 30);
+
+        var pdfBlob = doc.output("blob");
+
+        var reader = new FileReader();
+        reader.readAsDataURL(pdfBlob);
+        reader.onloadend = function () {
+            var base64PDF = reader.result.split(",")[1];
+
+            var updateData = { "nj_invoicepdf": base64PDF };
+
+            Xrm.WebApi.updateRecord("nj_billingevent", recordId, updateData).then(
+                function success(result) {
+                    console.log("✅ PDF Saved Successfully for Record:", recordId);
+                    Xrm.Navigation.openAlertDialog({ text: "✅ PDF Generated and Saved Successfully!" });
+                },
+                function (error) {
+                    console.error("❌ Error saving PDF:", error.message);
+                    Xrm.Navigation.openAlertDialog({ text: "❌ Error saving PDF: " + error.message });
+                }
+            );
+        };
+    });
+}

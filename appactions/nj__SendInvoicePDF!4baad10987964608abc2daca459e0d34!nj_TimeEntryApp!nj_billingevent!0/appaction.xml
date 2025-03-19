@@ -1,0 +1,32 @@
+<appaction uniquename="nj__SendInvoicePDF!4baad10987964608abc2daca459e0d34!nj_TimeEntryApp!nj_billingevent!0">
+  <appmoduleid>
+    <uniquename>nj_TimeEntryApp</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Send Invoice PDF">
+    <label description="Send Invoice PDF" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>nj_billingevent</logicalname>
+  </contextentity>
+  <contextvalue>nj_billingevent</contextvalue>
+  <fonticon>$clientsvg:Mail</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>SendInvoicePDF!4baad10987964608abc2daca459e0d34</name>
+  <onclickeventjavascriptfunctionname>generateInvoicePDF</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":5}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>19b4457f-42f0-ef11-be20-7c1e523cfb21</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>100350020.5000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>
