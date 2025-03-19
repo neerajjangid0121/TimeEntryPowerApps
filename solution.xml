@@ -1,0 +1,243 @@
+<ImportExportXml version="9.2.25031.190" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25031.190" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25031.00192">
+  <SolutionManifest>
+    <UniqueName>TimecardApp</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="Timecard App" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.5</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>NJTimecardApp</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="NJ Timecard App" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions />
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>nj</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>12492</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="appnotification" behavior="1" />
+      <RootComponent type="1" schemaName="contact" behavior="0" />
+      <RootComponent type="1" schemaName="cr5aa_application" behavior="0" />
+      <RootComponent type="1" schemaName="cr5aa_bugresolution" behavior="0" />
+      <RootComponent type="1" schemaName="cr5aa_flowforbugresolution" behavior="0" />
+      <RootComponent type="1" schemaName="cr5aa_recruitmentprocess" behavior="0" />
+      <RootComponent type="1" schemaName="cr5aa_role" behavior="0" />
+      <RootComponent type="1" schemaName="nj_billingevent" behavior="0" />
+      <RootComponent type="1" schemaName="nj_billingeventitem" behavior="0" />
+      <RootComponent type="1" schemaName="nj_project" behavior="0" />
+      <RootComponent type="1" schemaName="nj_projectcreation" behavior="0" />
+      <RootComponent type="1" schemaName="nj_projectkeymember" behavior="0" />
+      <RootComponent type="1" schemaName="nj_projecttask" behavior="0" />
+      <RootComponent type="1" schemaName="nj_timecard" behavior="0" />
+      <RootComponent type="1" schemaName="projectd_approvalprocessforproject" behavior="0" />
+      <RootComponent type="1" schemaName="projectd_projecttask" behavior="0" />
+      <RootComponent type="1" schemaName="projectd_projecttracking" behavior="0" />
+      <RootComponent type="1" schemaName="task" behavior="0" />
+      <RootComponent type="9" schemaName="cr5aa_outcome" behavior="0" />
+      <RootComponent type="9" schemaName="cr5aa_prioritystatus" behavior="0" />
+      <RootComponent type="9" schemaName="nj_approvalstatuschoice" behavior="0" />
+      <RootComponent type="9" schemaName="projectd_projecttrackingstatuschoices" behavior="0" />
+      <RootComponent type="20" id="{55ad20d4-14f0-ef11-be20-7c1e523cfb21}" behavior="0" />
+      <RootComponent type="29" id="{2f5a0aa5-09ed-ef11-be21-002248d662f2}" behavior="0" />
+      <RootComponent type="29" id="{4542d5eb-3cf3-ef11-be20-7c1e523cfb21}" behavior="0" />
+      <RootComponent type="29" id="{4fac7b3a-8ff2-ef11-be20-7c1e523cfb21}" behavior="0" />
+      <RootComponent type="29" id="{73648c89-82e4-ef11-be20-000d3aca3d37}" behavior="0" />
+      <RootComponent type="29" id="{a0ddcabc-f8f7-ef11-bae1-7c1e523dbfae}" behavior="0" />
+      <RootComponent type="29" id="{a7e6fb07-e3e2-ef11-be21-000d3aca3d37}" behavior="0" />
+      <RootComponent type="29" id="{ee2747e1-53e4-ef11-be20-000d3aca3d37}" behavior="0" />
+      <RootComponent type="31" id="{fd5e2278-bef8-ef11-bae1-7c1e523dbfae}" behavior="0" />
+      <RootComponent type="60" id="{15263fa2-bdf8-ef11-bae1-7c1e523dbfae}" behavior="0" />
+      <RootComponent type="60" id="{7b92d3f4-1ae9-ef11-be20-002248d662f2}" />
+      <RootComponent type="61" schemaName="cr581_AutoPopulateAssignedToResourceField" behavior="0" />
+      <RootComponent type="61" schemaName="nj_GenerateInvoicePDF" behavior="0" />
+      <RootComponent type="61" schemaName="nj_RestrictDelete" behavior="0" />
+      <RootComponent type="61" schemaName="nj_UpdateDataverseField" behavior="0" />
+      <RootComponent type="61" schemaName="nj_UpdateStage" behavior="0" />
+      <RootComponent type="62" schemaName="nj_TimeEntryApp" behavior="0" />
+      <RootComponent type="62" schemaName="nj_TimeEntryAppFinance" behavior="0" />
+      <RootComponent type="80" schemaName="nj_TimeEntryApp" behavior="0" />
+      <RootComponent type="80" schemaName="nj_TimeEntryAppFinance" behavior="0" />
+      <RootComponent type="300" schemaName="nj_timeentryappdefaultcommandlibrary_51108" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="adx_externalidentity" displayName="External Identity" solution="PowerPages_RuntimeCore (1.0.2407.1)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="1" schemaName="contact" displayName="Contact" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="adx_invitation" displayName="Invitation" solution="PowerPages_RuntimeCore (1.0.2407.1)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="1" schemaName="contact" displayName="Contact" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="adx_webformsession" displayName="Multistep Form Session" solution="PowerPages_RuntimeCore (1.0.2407.1)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="1" schemaName="contact" displayName="Contact" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="appnotification" displayName="Notification" solution="AppNotifications (10.0.0.16)">
+          <package appName="PowerAppsUnifiedClientExtensionApp Package" version="1.0.0.62">msft_PowerAppsUnifiedClientInfraExtensions (1.0.0.62)</package>
+        </Required>
+        <Dependent type="1" schemaName="appnotification" displayName="Notification" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="powerpagessiteaifeedback" displayName="Power Pages Site AI Feedback" solution="PowerPages_RuntimeExtensions (1.1.2411.1)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="1" schemaName="contact" displayName="Contact" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msa_contact_managingpartner" displayName="msa_contact_managingpartner" parentSchemaName="account" parentDisplayName="Account" solution="PowerPages_RuntimeCoreDependencies (1.0.2305.1)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="10" schemaName="msa_contact_managingpartner" displayName="msa_contact_managingpartner" parentSchemaName="account" parentDisplayName="Account" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="adx_invitation_invitecontacts" displayName="adx_invitation_invitecontacts" parentSchemaName="adx_invitation" parentDisplayName="Invitation" solution="PowerPages_RuntimeCore (1.0.2407.1)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="10" schemaName="adx_invitation_invitecontacts" displayName="adx_invitation_invitecontacts" parentSchemaName="adx_invitation" parentDisplayName="Invitation" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="adx_invitation_redeemedcontacts" displayName="adx_invitation_redeemedcontacts" parentSchemaName="adx_invitation" parentDisplayName="Invitation" solution="PowerPages_RuntimeCore (1.0.2407.1)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="10" schemaName="adx_invitation_redeemedcontacts" displayName="adx_invitation_redeemedcontacts" parentSchemaName="adx_invitation" parentDisplayName="Invitation" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="powerpagecomponent_mspp_webrole_contact" displayName="powerpagecomponent_mspp_webrole_contact" parentSchemaName="powerpagecomponent" parentDisplayName="Site Component" solution="PowerPages_RuntimeExtensions (1.1.2411.1)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="10" schemaName="powerpagecomponent_mspp_webrole_contact" displayName="powerpagecomponent_mspp_webrole_contact" parentSchemaName="powerpagecomponent" parentDisplayName="Site Component" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Contact Quick Form" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{bdb0ae1c-32fa-4374-b637-8dafe107bc44}">
+          <package appName="msdynce_AppCommon" version="9.0.25023.10001">msdynce_AppCommonAnchor (9.0.25023.10001)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Application" id="{a6f22733-f178-4ecb-a5b7-aa79a21e4616}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="cc_MscrmControls.Map.MapControl/libs/MapControlIframeContent.html" displayName="cc_MscrmControls.Map.MapControl/libs/MapControlIframeContent.html" solution="BaseCustomControlsCore (9.0.2503.1001)">
+          <package appName="Base Custom Controls" version="9.0.2503.1001">BaseCustomControlsCore (9.0.2503.1001)</package>
+        </Required>
+        <Dependent type="80" schemaName="nj_TimeEntryAppFinance" displayName="Time Entry App" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="nj_TimeEntryApp" displayName="Time Entry App" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="nj_TimeEntryAppFinance" displayName="Time Entry App" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="mspp_monaco/monaco_css.html" displayName="mspp_monaco/monaco_css.html" solution="PowerPages_AppResources (1.0.2501.3)">
+          <package appName="Power Pages Core Package" version="1.0.2501.142">PowerPages_Core (1.0.2501.142)</package>
+        </Required>
+        <Dependent type="80" schemaName="nj_TimeEntryApp" displayName="Time Entry App" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="OpenInSidePaneIcon.svg" displayName="OpenInSidePaneIcon.svg" solution="msft_UnifiedClientCommandingExtension (1.0.0.10)">
+          <package appName="PowerAppsUnifiedClientExtensionApp Package" version="1.0.0.62">msft_PowerAppsUnifiedClientInfraExtensions (1.0.0.62)</package>
+        </Required>
+        <Dependent type="appaction" displayName="nj__Release!14cf912b2bc245358d3c1275fb567b3c!nj_TimeEntryApp!nj_billingevent!1" id.uniquename="nj__Release!14cf912b2bc245358d3c1275fb567b3c!nj_TimeEntryApp!nj_billingevent!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2503.1001)">
+          <package appName="Base Custom Controls" version="9.0.2503.1001">BaseCustomControlsCore (9.0.2503.1001)</package>
+        </Required>
+        <Dependent type="26" schemaName="Active Roles" displayName="Active Roles" parentSchemaName="cr5aa_role" parentDisplayName="Role" id="{ab5bee65-50f8-4e23-ab36-58f7e6806291}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="9" schemaName="msdyn_flow_approval_priority" displayName="Priority" solution="msdyn_FlowApprovalsCore (2.0.8.0)">
+          <package appName="msdyn_FlowApprovals" version="2.0.8.0">msdyn_FlowApprovals (2.0.8.0)</package>
+        </Required>
+        <Dependent type="2" schemaName="cr5aa_priority" displayName="Priority" parentSchemaName="cr5aa_bugresolution" parentDisplayName="Bug Resolution" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AllowNotificationsEarlyAccess" solution="AppNotifications (10.0.0.16)" id.uniquename="AllowNotificationsEarlyAccess">
+          <package appName="PowerAppsUnifiedClientExtensionApp Package" version="1.0.0.62">msft_PowerAppsUnifiedClientInfraExtensions (1.0.0.62)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=nj_TimeEntryApp,settingdefinitionid.uniquename=AllowNotificationsEarlyAccess" id.parentappmoduleid.uniquename="nj_TimeEntryApp" id.settingdefinitionid.uniquename="AllowNotificationsEarlyAccess" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.17">PowerAppsAppFramework_Anchor (1.0.0.17)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=nj_TimeEntryApp,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="nj_TimeEntryApp" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.17">PowerAppsAppFramework_Anchor (1.0.0.17)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=nj_TimeEntryAppFinance,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="nj_TimeEntryAppFinance" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>
