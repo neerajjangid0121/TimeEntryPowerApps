@@ -12,6 +12,8 @@ function updateDataverseField(selectedControl) {
 
     // Loop through all selected records
     selectedControl.forEach(function(recordId) {
+        console.log("Updated wen resource through vs code");
+        
         console.log("🔹 Updating Record ID:", recordId); // Debugging each record update
 
         var data = {};
